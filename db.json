@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Raphael",
+      "email": "raphaelvitorlopes@icloud.com",
+      "password": "123456"
+    },
+    {
+      "id": "cb6f",
+      "name": "Thaina",
+      "email": "thainacibelelopes@icloud.com",
+      "password": "123456"
+    }
+  ]
+}
