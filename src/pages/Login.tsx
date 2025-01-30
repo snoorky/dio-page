@@ -5,10 +5,11 @@ import Input from "../components/Input"
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import api from "../services/Api"
+import { useAuth } from "../hooks/useAuth"
 
 function Login() {
   const navigate = useNavigate()
+  const { handleLogin } = useAuth()
 
   const schema = yup.object({
     email: yup.string().email("Email não é válido").required("Campo obrigatório"),
@@ -20,16 +21,8 @@ function Login() {
     mode: "onChange"
   })
 
-  const onSubmit = async (formData) => {
-    try {
-      const { data } = await api.get(`users?email=${formData.email}&password=${formData.password}`)
-
-      if (data.length == 1) {
-        navigate("/feed")
-      }
-    } catch (error) {
-      console.error("Email ou senha incorretos", error);
-    }
+  const onSubmit = async (formData: IFormData) => {
+    handleLogin(formData)
   }
 
   return (
@@ -44,9 +37,9 @@ function Login() {
             <h2 className="text-xl md:text-3xl lg:text-5xl">Access your account</h2>
             <p className="text-gray-300 lg:text-xl">Log in and make the change.</p>
             <form className="mt-4 lg:mt-10 mb-4 lg:mb-5 space-y-2 lg:space-y-4 w-full" onSubmit={handleSubmit(onSubmit)}>
-              <Input control={control} name="email" errorMessage={errors?.email?.message} placeholder="Email" icon="envelope-at-fill" />
-              <Input control={control} name="password" errorMessage={errors?.password?.message} placeholder="Password" type="password" icon="lock-fill" />
-              <Button isFull={true} value="Entrar" color="primary" type="submit" />
+              <Input name="email" errorMessage={errors?.email?.message} control={control} placeholder="Email" type="text" icon="envelope-at-fill" />
+              <Input name="password" errorMessage={errors?.password?.message} control={control} placeholder="Password" type="password" icon="lock-fill" />
+              <Button isFull={true} value="Entrar" color="primary" />
             </form>
             <div className="flex justify-between w-full">
               <a>I forgot my password</a>

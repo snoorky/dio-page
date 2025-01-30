@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Raphael",
       "email": "raphaelvitorlopes@icloud.com",
       "password": "123456"
     },
     {
-      "id": "cb6f",
+      "id": 2,
       "name": "Thaina",
       "email": "thainacibelelopes@icloud.com",
       "password": "123456"

@@ -1,4 +1,4 @@
-function ProgressBar({ value }) {
+function ProgressBar({ value }: IProgressBar) {
   const style = `relative rounded-md h-2`
 
   return (

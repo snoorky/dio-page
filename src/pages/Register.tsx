@@ -5,7 +5,7 @@ import Input from "../components/Input"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import api from "../services/Api";
+import api from "../Api";
 
 function Register() {
   const navigate = useNavigate()
@@ -21,7 +21,7 @@ function Register() {
     mode: "onChange"
   })
 
-  const registerUser = async (formData) => {
+  const registerUser = async (formData: IFormData) => {
     try {
       await api.post("/users", {
         name: formData.name,
@@ -46,10 +46,10 @@ function Register() {
             <h2 className="text-xl md:text-3xl lg:text-5xl">Get started now for free</h2>
             <p className="text-gray-300 lg:text-xl">Log in and make the change.</p>
             <form className="mt-4 lg:mt-10 mb-4 lg:mb-5 space-y-2 lg:space-y-4 w-full" onSubmit={handleSubmit(registerUser)}>
-              <Input control={control} errorMessage={errors?.name?.message} name={"name"} placeholder="Full Name" icon="envelope-at-fill" />
-              <Input control={control} errorMessage={errors?.email?.message} name={"email"} placeholder="Email" icon="envelope-at-fill" />
+              <Input name="name" errorMessage={errors?.name?.message} control={control} placeholder="Full Name" type="text" icon="envelope-at-fill" />
+              <Input name="email" errorMessage={errors?.email?.message} control={control} placeholder="Email" type="email" icon="envelope-at-fill" />
               <Input control={control} errorMessage={errors?.password?.message} name={"password"} placeholder="Password" type="password" icon="lock-fill" />
-              <Button value="Create my account" color="primary" isFull={true} type="submit" />
+              <Button value="Create my account" color="primary" isFull={true} />
             </form>
             <div className="space-y-4">
               <p className="text-sm">By clicking on `create my account`, I declare that I accept the DIO Privacy Policies and Terms of Use.</p>

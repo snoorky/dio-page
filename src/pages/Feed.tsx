@@ -7,8 +7,8 @@ function Feed() {
   return (
     <div className="w-screen h-full lg:h-screen bg-gray-900 flex flex-col">
       <Header />
-      <div className="space-y-10 text-white grid grid-cols-1 lg:grid-cols-4 px-4 md:px-12 py-10 lg:gap-10">
-        <div className="lg:col-span-3">
+      <div className="space-y-10 text-white grid grid-cols-1 lg:grid-cols-5 px-4 md:px-12 py-10 lg:gap-10">
+        <div className="lg:col-span-4">
           <h1 className="text-xl md:text-2xl lg:text-4xl">Feed</h1>
           <div className="mt-4 lg:mt-10 gap-4 lg:gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             <CardFeed />
