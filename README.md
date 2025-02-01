@@ -1,4 +1,4 @@
-# 🏆 DIO Clone with Authentication Features
+# DIO Clone with Authentication Features
 
 This project is a replica of the DIO layout with user registration, login and authentication functionalities.
 
